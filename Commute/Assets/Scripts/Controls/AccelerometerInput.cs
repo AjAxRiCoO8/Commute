@@ -27,9 +27,6 @@ public class AccelerometerInput : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-        // Translate the gameObject according to the devices orientation.
-        transform.Translate(Input.acceleration.x * accelerationAmplifier, 0, 0);
-
         foreach (Touch touch in Input.touches)
         {
             if (TouchControls.TouchOnLeftSide(touch)) {
@@ -44,4 +41,8 @@ public class AccelerometerInput : MonoBehaviour {
         amountOfFingers.text = "Amount of fingers = " + Input.touchCount;
         amplifier.text = "Amplifier = " + accelerationAmplifier;
 	}
+
+    public float GetXMovement() {
+        return Input.acceleration.x * accelerationAmplifier;
+    }
 }
